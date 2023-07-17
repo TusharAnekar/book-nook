@@ -1,0 +1,55 @@
+.header-container .title {
+  grid-area: title;
+  color: var(--light-white-color);
+  cursor: pointer;
+  width: fit-content;
+}
+
+.header-container .input_search {
+  grid-area: search;
+  padding: 0.3rem;
+  border-radius: 1rem;
+  border: none;
+}
+
+.header-container .icons {
+  grid-area: icons;
+  display: flex;
+  justify-content: space-evenly;
+  color: white;
+}
+
+.header-container {
+  display: grid;
+  grid-template-areas:
+    "title title icons"
+    "search search search";
+  background-color: var(--primary-color);
+  padding: 1rem;
+  gap: 1rem;
+}
+
+.icons svg {
+  font-size: 2rem;
+}
+
+.header-container .icon {
+  cursor: pointer;
+}
+
+@media (min-width: 768px) {
+  .header-container {
+    grid-template-areas: "title search icons";
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  .icons svg {
+    font-size: 2.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .icons svg {
+    font-size: 3rem;
+  }
+}

@@ -1,0 +1,14 @@
+.footer-container {
+    background-color: var(--light-black-color);
+    color: var(--light-white-color);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    padding: 2rem 1rem;
+    justify-content: space-around;
+}
+
+.footer-container .bold {
+    font-weight: bold;
+    padding-bottom: 0.5rem;
+}
