@@ -21,11 +21,13 @@
   color: var(--light-white-color);
 }
 
-.home-container .welcome-message-container button {
+.home-container .welcome-message-container .products-link {
   width: fit-content;
   padding: 0.5rem 1rem;
   background-color: var(--primary-color);
   color: var(--light-white-color);
+  border-radius: 0.5rem;
+  text-decoration: none;
 }
 
 .home-container .categories-text-container {
