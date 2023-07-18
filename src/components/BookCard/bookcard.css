@@ -1,0 +1,88 @@
+.book-card-container {
+  width: 200px;
+  height: 330px;
+  overflow: hidden;
+  border-radius: 0.5rem;
+  position: relative;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+}
+
+.book-card-container img {
+  width: 150px;
+  height: 200px;
+  display: block;
+  margin: 0 auto;
+}
+
+.book-card-container .book-card-details-container {
+    padding: 0.5rem;
+}
+
+.book-card-container .book-name {
+    font-weight: bold;
+    width: 130px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.book-card-container .rating {
+    background-color: green;
+    width: fit-content;
+    color: var(--light-white-color);
+    padding: 0 0.2rem;
+    border-radius: 0.5rem;
+}
+
+.book-card-container .rating svg {
+    font-size: 1rem;
+}
+
+.name-author-rating-container{
+    margin-bottom: 0.5rem;
+}
+
+.name-author-rating-container .book-name-rating-container{
+    display: flex;
+    justify-content: space-between;
+}
+
+.book-card-container .price-container {
+    display: flex;
+    column-gap: 0.5rem;
+}
+
+.book-card-container .price-container .original-price {
+    text-decoration: line-through;
+    color: gray;
+}
+
+.book-card-container .discount {
+    color: green;
+}
+
+.book-card-container button {
+    width: 100%;
+    padding: 0.5rem;
+    margin-top: 0.5rem;
+    background-color: var(--primary-color);
+    color: var(--light-white-color);
+}
+
+.book-card-container .heart-icon {
+    position: absolute;
+    top: 0.3rem;
+    right: 0.3rem;
+}
+
+@media (min-width: 768px) {
+    .book-card-container {
+        width: 250px;
+        height: 380px;
+      }
+      .book-card-container img {
+        width: 200px;
+        height: 230px;
+      }
+}

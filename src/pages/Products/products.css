@@ -1,0 +1,65 @@
+.products-container {
+  padding: 1rem;
+}
+
+.products-container .filters-header-container {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+
+.products-container .filters-header-container p {
+  font-weight: bold;
+}
+
+.products-container .filters-header-container button {
+  cursor: pointer;
+  background-color: var(--main-bg-color);
+  width: fit-content;
+  text-decoration: underline;
+}
+
+.products-container .sort-filter-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem 0;
+  margin-bottom: 1.5rem;
+}
+
+.products-container .categories-filter-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem 0;
+  margin-bottom: 1.5rem;
+}
+
+.products-container .ratings-filter-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem 0;
+}
+
+.products-container .books-container {
+  margin: 1rem 0;
+}
+
+.products-container .books-container h2 {
+  margin: 0 0 2rem 2rem;
+}
+
+.products-container .books-container .books-card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+}
+
+@media (min-width: 768px) {
+}
+
+@media (min-width: 1024px) {
+    .products-container {
+        display: grid;
+        grid-template-columns: 250px auto;
+    }
+}

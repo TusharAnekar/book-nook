@@ -1,10 +1,10 @@
+import { useContext } from "react";
+import { Link } from "react-router-dom";
+
 import "./home.css";
 
-import { Header } from "../../components/Header/Header";
-import { useContext } from "react";
 import { CategoriesContext } from "../../contexts/categories-context";
 import { Footer } from "../../components/Footer/Footer";
-import { Link } from "react-router-dom";
 
 export function Home() {
   const {
@@ -13,15 +13,14 @@ export function Home() {
   return (
     <>
       <div className="home-container">
-        <Header />
-
         <div className="home-content-container">
-            
           <div className="background-image-container">
             <div className="welcome-message-container">
               <p>Welcome to Book Nook,</p>
               <h1>For All Your Reading Needs</h1>
-              <Link to={"/products"} className="products-link">SHOP NOW</Link>
+              <Link to={"/products"} className="products-link">
+                SHOP NOW
+              </Link>
             </div>
           </div>
 
@@ -37,13 +36,15 @@ export function Home() {
             {categories.map(({ id, categoryName, description }) => (
               <div key={id} className="category-container">
                 <p className="category-name">{categoryName}</p>
-                <p><small>{description}</small></p>
+                <p>
+                  <small>{description}</small>
+                </p>
               </div>
             ))}
           </div>
         </div>
 
-        <Footer/>
+        <Footer />
       </div>
     </>
   );
