@@ -15,7 +15,6 @@ export function Products() {
   const {
     productsState: {
       products,
-      inputSearch,
       inputSort,
       inputCategory,
       inputRating,
@@ -36,7 +35,6 @@ export function Products() {
   }
 
   function handleClearButton() {
-    console.log(products);
     productsDispatch({ type: "CLEAR_FILTERS", payload: products });
   }
 
@@ -56,7 +54,7 @@ export function Products() {
                 type="radio"
                 name="sort"
                 value={"LTH"}
-                checked={inputSort}
+                checked={inputSort === "LTH" && true}
                 onClick={handleRadioInput}
               />
               Price - Low to High
@@ -66,7 +64,7 @@ export function Products() {
                 type="radio"
                 name="sort"
                 value={"HTL"}
-                checked={inputSort}
+                checked={inputSort === "HTL" && true}
                 onClick={handleRadioInput}
               />
               Price - High to Low
@@ -80,6 +78,7 @@ export function Products() {
                 <input
                   type="checkbox"
                   value={categoryName}
+                  checked={inputCategory.includes(categoryName) && true}
                   onClick={handleCheckboxInput}
                 />
                 {categoryName}

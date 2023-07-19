@@ -33,6 +33,7 @@ export function ProductsProvider({ children }) {
     getProducts();
   }, []);
 
+
   const searchedFilteredProducts = productsState?.inputSearch.length
     ? productsState?.products.filter(({ name }) =>
         name.toLowerCase().includes(productsState?.inputSearch.toLowerCase())

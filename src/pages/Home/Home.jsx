@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import "./home.css";
 
@@ -8,8 +8,16 @@ import { Footer } from "../../components/Footer/Footer";
 
 export function Home() {
   const {
-    categoriesState: { categories },
+    categoriesState: { categories }, getCategoryById
   } = useContext(CategoriesContext);
+
+  const navigate = useNavigate()
+
+  function handleCategory (categoryId) {
+    getCategoryById(categoryId)
+    navigate("/products")
+  }
+
   return (
     <>
       <div className="home-container">
@@ -33,8 +41,8 @@ export function Home() {
           </div>
 
           <div className="categories-container">
-            {categories.map(({ id, categoryName, description }) => (
-              <div key={id} className="category-container">
+            {categories.map(({_id, categoryName, description }) => (
+              <div key={_id} className="category-container" onClick={() => handleCategory(_id)}>
                 <p className="category-name">{categoryName}</p>
                 <p>
                   <small>{description}</small>

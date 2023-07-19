@@ -10,12 +10,15 @@ import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
 
 export function Header() {
-  const {productsDispatch} = useContext(ProductsContext)
+  const { productsState: {inputSearch}, productsDispatch } = useContext(ProductsContext);
   const navigate = useNavigate();
 
-  function handleInput (e) {
-    productsDispatch({type: "SET_INPUT_SEARCH", payload: e.target.value})
-    navigate("/products")
+  function handleInput(e) {
+    productsDispatch({
+      type: "SET_INPUT_SEARCH",
+      payload: e.target.value,
+    });
+    navigate("/products");
   }
 
   return (
@@ -26,9 +29,10 @@ export function Header() {
 
       <input
         type="text"
-        placeholder="Search for products"
+        placeholder="Search for books"
         className="input_search"
-        onChange={handleInput}
+        value={inputSearch}
+        onChange={(e) => handleInput(e)}
       />
 
       <div className="icons">

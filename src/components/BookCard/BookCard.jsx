@@ -1,7 +1,9 @@
 import "./bookcard.css";
 
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
+import FavoriteIcon from "@mui/icons-material/Favorite";
 import StarIcon from "@mui/icons-material/Star";
+import { useState } from "react";
 
 export function BookCard({ book }) {
   const {
@@ -16,9 +18,15 @@ export function BookCard({ book }) {
     rating,
   } = book;
 
+  const [showLike, setShowLike] = useState(false);
+
   const discountPercentage = Math.trunc(
     ((originalPrice - price) / originalPrice) * 100
   );
+
+  function handleLike() {
+    setShowLike(!showLike);
+  }
 
   return (
     <div className="book-card-container">
@@ -41,7 +49,14 @@ export function BookCard({ book }) {
         </div>
 
         <button>Add to Cart</button>
-        <FavoriteBorderOutlinedIcon className="heart-icon"/>
+        {showLike ? (
+          <FavoriteIcon className="like-icon heart-icon-fill" onClick={handleLike} />
+        ) : (
+          <FavoriteBorderOutlinedIcon
+            className="like-icon heart-icon"
+            onClick={handleLike}
+          />
+        )}
       </div>
     </div>
   );
