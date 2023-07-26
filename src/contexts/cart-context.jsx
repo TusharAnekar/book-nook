@@ -31,7 +31,6 @@ export function CartProvider({ children }) {
         console.log(error);
       }
     }
-
     token && getCart();
   }, [token]);
 
