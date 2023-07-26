@@ -8,33 +8,23 @@ import { WishlistContext } from "../../contexts/wishlist-context";
 import { CartContext } from "../../contexts/cart-context";
 
 export function BookCard({ book }) {
-  const {
-    _id,
-    img,
-    name,
-    author,
-    price,
-    originalPrice,
-    isBestSeller,
-    category,
-    rating,
-  } = book;
+  const { img, name, author, price, originalPrice, rating } = book;
 
   const [showLike, setShowLike] = useState(false);
-  const {addProductToWishlist} = useContext(WishlistContext)
-  const {addProductToCart} = useContext(CartContext)
+  const { addProductToWishlist } = useContext(WishlistContext);
+  const { addProductToCart } = useContext(CartContext);
 
   const discountPercentage = Math.trunc(
     ((originalPrice - price) / originalPrice) * 100
   );
 
   function handleLike() {
-    addProductToWishlist(book)
+    addProductToWishlist(book);
     setShowLike(!showLike);
   }
 
-  function handleAddToCart () {
-    addProductToCart(book)
+  function handleAddToCart() {
+    addProductToCart(book);
   }
 
   return (
@@ -59,7 +49,10 @@ export function BookCard({ book }) {
 
         <button onClick={handleAddToCart}>Add to Cart</button>
         {showLike ? (
-          <FavoriteIcon className="like-icon heart-icon-fill" onClick={handleLike} />
+          <FavoriteIcon
+            className="like-icon heart-icon-fill"
+            onClick={handleLike}
+          />
         ) : (
           <FavoriteBorderOutlinedIcon
             className="like-icon heart-icon"
