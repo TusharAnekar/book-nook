@@ -10,11 +10,15 @@ export function Wishlist() {
     removeProductFromWishlist,
   } = useContext(WishlistContext);
 
-  const {addProductToCart} = useContext(CartContext)
+  const {cartState: {cart}, addProductToCart} = useContext(CartContext)
+
 
   function handleMoveToCart(book) {
-    addProductToCart(book);
+    if(!cart.some(({_id}) => _id === book._id)){
+      addProductToCart(book);
     removeProductFromWishlist(book._id)
+    }
+    
   }
 
   return (
@@ -34,7 +38,7 @@ export function Wishlist() {
                   <p>{author}</p>
                   <p>{price}</p>
                   <button onClick={() => handleMoveToCart(book)}>
-                    Move to cart
+                    { cart.some(({_id}) => _id === book._id) ? "Book in cart" : "Move to cart"}
                   </button>
                   <button onClick={() => removeProductFromWishlist(_id)}>
                     Remove from wishlist
