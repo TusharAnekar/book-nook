@@ -3,28 +3,41 @@ import "./bookcard.css";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import StarIcon from "@mui/icons-material/Star";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { WishlistContext } from "../../contexts/wishlist-context";
 import { CartContext } from "../../contexts/cart-context";
+import { useNavigate } from "react-router-dom";
 
 export function BookCard({ book }) {
   const { img, name, author, price, originalPrice, rating } = book;
 
-  const [showLike, setShowLike] = useState(false);
-  const { addProductToWishlist } = useContext(WishlistContext);
-  const { addProductToCart } = useContext(CartContext);
+  const navigate = useNavigate()
 
+  const { addProductToWishlist } = useContext(WishlistContext);
+  const { cartState: {cart}, addProductToCart } = useContext(CartContext);
+  const {wishlistState: {wishlist}, removeProductFromWishlist} = useContext(WishlistContext)
+  
   const discountPercentage = Math.trunc(
     ((originalPrice - price) / originalPrice) * 100
   );
 
+  const isBookInCart = cart.some(({_id}) => _id === book._id)
+  const isBookInWishlist = wishlist.some(({_id}) => _id === book._id)
+
   function handleLike() {
-    addProductToWishlist(book);
-    setShowLike(!showLike);
+    if(!isBookInWishlist) {
+      addProductToWishlist(book);
+    } else {
+      removeProductFromWishlist(book._id)
+    }
   }
 
   function handleAddToCart() {
-    addProductToCart(book);
+    if(isBookInCart) {
+      navigate("/cart")
+    } else {
+      addProductToCart(book);
+    }
   }
 
   return (
@@ -47,8 +60,8 @@ export function BookCard({ book }) {
           <p className="discount">{discountPercentage}% OFF</p>
         </div>
 
-        <button onClick={handleAddToCart}>Add to Cart</button>
-        {showLike ? (
+        <button onClick={handleAddToCart}>{isBookInCart ? "Go to Cart": "Add to Cart"}</button>
+        {isBookInWishlist ? (
           <FavoriteIcon
             className="like-icon heart-icon-fill"
             onClick={handleLike}
