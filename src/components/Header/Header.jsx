@@ -53,7 +53,7 @@ export function Header() {
 
         <AccountCircleOutlinedIcon
           className="icon"
-          onClick={() => navigate("/account")}
+          onClick={() => navigate("/login")}
         />
       </div>
     </nav>

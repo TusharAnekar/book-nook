@@ -3,7 +3,9 @@ import "./bookcard.css";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import StarIcon from "@mui/icons-material/Star";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { WishlistContext } from "../../contexts/wishlist-context";
+import { CartContext } from "../../contexts/cart-context";
 
 export function BookCard({ book }) {
   const {
@@ -19,13 +21,20 @@ export function BookCard({ book }) {
   } = book;
 
   const [showLike, setShowLike] = useState(false);
+  const {addProductToWishlist} = useContext(WishlistContext)
+  const {addProductToCart} = useContext(CartContext)
 
   const discountPercentage = Math.trunc(
     ((originalPrice - price) / originalPrice) * 100
   );
 
   function handleLike() {
+    addProductToWishlist(book)
     setShowLike(!showLike);
+  }
+
+  function handleAddToCart () {
+    addProductToCart(book)
   }
 
   return (
@@ -48,7 +57,7 @@ export function BookCard({ book }) {
           <p className="discount">{discountPercentage}% OFF</p>
         </div>
 
-        <button>Add to Cart</button>
+        <button onClick={handleAddToCart}>Add to Cart</button>
         {showLike ? (
           <FavoriteIcon className="like-icon heart-icon-fill" onClick={handleLike} />
         ) : (
