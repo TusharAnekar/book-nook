@@ -1,0 +1,40 @@
+.signup-container {
+  border: 1px solid red;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.signup-container .form-details-container {
+  width: 60vw;
+  height: 70vh;
+  max-width: 450px;
+  max-height: 420px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  padding: 1.5rem;
+}
+
+.signup-container .form-details-container h2,
+.login-link {
+  text-align: center;
+}
+
+.signup-container .block {
+  display: block;
+  margin: 0.5rem 0;
+}
+
+.signup-container .input {
+    width: 100%;
+    padding: 0.3rem;
+}
+
+.signup-container button {
+    width: 100%;
+    margin: 1rem 0;
+    padding: 0.5rem;
+    background-color: var(--primary-color);
+    color: var(--light-white-color);
+}

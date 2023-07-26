@@ -1,0 +1,36 @@
+.cart-container {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+}
+
+.cart-container h2 {
+    text-align: center;
+    margin: 1rem;
+}
+
+.cart-container .book-cart-container img{
+    width:20vw;
+    height: 30vh;
+    max-width: 180px;
+    max-height: 200px;
+}
+
+.cart-container .book-cart-container {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    padding: 1rem;
+    width: 50vw;
+    height: 35vh;
+    max-width: 400px;
+    max-height: 300px;
+}
+
+.cart-container .book-cart-container button {
+    width: 100%;
+    padding: 1rem;
+    margin: 1rem 0;
+    color: red;
+}
