@@ -13,6 +13,7 @@
   height: 200px;
   display: block;
   margin: 0 auto;
+  cursor: pointer;
 }
 
 .book-card-container .book-card-details-container {

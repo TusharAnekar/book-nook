@@ -3,8 +3,12 @@ import { useContext } from "react";
 import "./wishlist.css";
 import { WishlistContext } from "../../contexts/wishlist-context";
 import { CartContext } from "../../contexts/cart-context";
+import { useNavigate } from "react-router-dom";
 
 export function Wishlist() {
+
+  const navigate = useNavigate()
+  
   const {
     wishlistState: { wishlist },
     removeProductFromWishlist,
@@ -30,7 +34,7 @@ export function Wishlist() {
             const { _id, img, author, name, price } = book;
             return (
               <div key={_id} className="wishlist-book-container">
-                <img src={img} alt={name} />
+                <img src={img} alt={name} onClick={() => navigate(`/products/${_id}`)}/>
                 <div className="wishlist-book-details">
                   <p>
                     <strong>{name}</strong>

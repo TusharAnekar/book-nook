@@ -2,8 +2,12 @@ import { useContext } from "react";
 
 import "./cart.css";
 import { CartContext } from "../../contexts/cart-context";
+import { useNavigate } from "react-router-dom";
 
 export function Cart() {
+
+  const navigate = useNavigate()
+
   const {
     cartState: { cart },
     removeProductFromCart,
@@ -15,7 +19,7 @@ export function Cart() {
           <h2>My Cart</h2>
           {cart.map(({ _id, img, author, name, price }) => (
             <div key={_id} className="book-cart-container">
-              <img src={img} alt={name} />
+              <img src={img} alt={name} onClick={() => navigate(`/products/${_id}`)}/>
               <div>
                 <p>
                   <strong>{name}</strong>

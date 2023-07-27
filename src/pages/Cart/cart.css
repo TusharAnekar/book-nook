@@ -14,6 +14,7 @@
     height: 30vh;
     max-width: 180px;
     max-height: 200px;
+    cursor: pointer;
 }
 
 .cart-container .book-cart-container {

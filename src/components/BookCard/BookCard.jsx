@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 import { ProductsContext } from "../../contexts/products-context";
 
 export function BookCard({ book }) {
-  const { img, name, author, price, originalPrice, rating } = book;
+  const { _id, img, name, author, price, originalPrice, rating } = book;
 
   const navigate = useNavigate()
 
@@ -40,7 +40,7 @@ export function BookCard({ book }) {
 
   return (
     <div className="book-card-container">
-      <img src={img} alt={name} />
+      <img src={img} alt={name} onClick={() => navigate(`/products/${_id}`)}/>
       <div className="book-card-details-container">
         <div className="name-author-rating-container">
           <div className="book-name-rating-container">

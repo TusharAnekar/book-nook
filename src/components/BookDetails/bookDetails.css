@@ -1,0 +1,107 @@
+.book-details-container .book-container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.book-details-container img {
+  width: 200px;
+  height: 300px;
+}
+
+.book-container .rating {
+  color: #e67a00;
+  margin-bottom: 0.5rem;
+}
+
+.book-details-container .prices-container {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 0.3rem;
+}
+
+.book-details-container .prices-container p {
+  font-size: large;
+  font-weight: bold;
+}
+
+.book-details-container .original-price {
+  text-decoration: line-through;
+  color: gray;
+}
+
+.book-details-container .discount-percentage {
+  color: green;
+}
+
+.book-details-container .red-text {
+  color: red;
+  margin-bottom: 0.5rem;
+}
+
+.book-details-container .extra-details-container {
+  margin-bottom: 0.5rem;
+}
+
+.book-details-container .primary-color-text {
+  color: var(--primary-color);
+}
+
+.book-details-container .best-seller-container {
+  background-color: green;
+  color: white;
+  width: fit-content;
+  padding: 0.3rem;
+  margin: 0.3rem 0;
+}
+
+.book-details-container .buttons-container {
+  display: flex;
+  justify-content: space-between;
+  margin: 1rem 0;
+}
+
+.book-details-container button {
+  padding: 0.5rem;
+}
+
+.book-details-container .cart-button {
+  background-color: var(--primary-color);
+  color: var(--light-white-color);
+}
+
+.book-details-container .wishlist-button {
+  color: red;
+}
+
+@media (min-width: 768px) {
+  .book-details-container {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .book-details-container .book-container {
+    width: 600px;
+    height: 500px;
+    display: flex;
+    flex-direction: row;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    gap: 2rem;
+  }
+
+  .book-details-container img {
+    width: 250px;
+    height: 350px;
+  }
+
+  .book-details-container .buttons-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}

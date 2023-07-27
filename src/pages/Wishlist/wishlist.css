@@ -19,6 +19,7 @@
     height: 50vh;
     max-width: 150px;
     max-height: 200px;
+    cursor: pointer;
 }
 
 .wishlist-container .wishlist-book-container {
