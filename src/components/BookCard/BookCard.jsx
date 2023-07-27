@@ -61,17 +61,12 @@ export function BookCard({ book }) {
         </div>
 
         <button onClick={handleAddToCart}>{isBookInCart ? "Go to Cart": "Add to Cart"}</button>
-        {isBookInWishlist ? (
+        
           <FavoriteIcon
-            className="like-icon heart-icon-fill"
+            className= {isBookInWishlist ? "like-icon heart-icon-fill" : "like-icon"}
             onClick={handleLike}
           />
-        ) : (
-          <FavoriteBorderOutlinedIcon
-            className="like-icon heart-icon"
-            onClick={handleLike}
-          />
-        )}
+        
       </div>
     </div>
   );

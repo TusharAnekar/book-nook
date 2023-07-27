@@ -74,11 +74,9 @@
     position: absolute;
     top: 0.3rem;
     right: 0.3rem;
+    cursor: pointer;
+    color: gray;
 }
-
-/* .book-card-container .heart-icon {
-    color: var(--light-white-color)
-} */
 
 .book-card-container .heart-icon-fill {
     color: red;
