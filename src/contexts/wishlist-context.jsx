@@ -73,6 +73,8 @@ export function WishlistProvider({ children }) {
     }
   }
 
+  const bookInWishlist = (book) => wishlistState.wishlist.some(({_id}) => _id === book._id)
+
   return (
     <WishlistContext.Provider
       value={{
@@ -80,6 +82,7 @@ export function WishlistProvider({ children }) {
         wishlistDispatch,
         addProductToWishlist,
         removeProductFromWishlist,
+        bookInWishlist
       }}
     >
       {children}

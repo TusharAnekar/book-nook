@@ -6,22 +6,21 @@ import { useContext } from "react";
 import { WishlistContext } from "../../contexts/wishlist-context";
 import { CartContext } from "../../contexts/cart-context";
 import { useNavigate } from "react-router-dom";
+import { ProductsContext } from "../../contexts/products-context";
 
 export function BookCard({ book }) {
   const { img, name, author, price, originalPrice, rating } = book;
 
   const navigate = useNavigate()
 
-  const { addProductToWishlist } = useContext(WishlistContext);
-  const { cartState: {cart}, addProductToCart } = useContext(CartContext);
-  const {wishlistState: {wishlist}, removeProductFromWishlist} = useContext(WishlistContext)
+  const {getDiscount} = useContext(ProductsContext)
+  const { addProductToCart, bookInCart } = useContext(CartContext);
+  const {bookInWishlist, addProductToWishlist, removeProductFromWishlist} = useContext(WishlistContext)
   
-  const discountPercentage = Math.trunc(
-    ((originalPrice - price) / originalPrice) * 100
-  );
+  const discountPercentage = getDiscount(originalPrice, price)
 
-  const isBookInCart = cart.some(({_id}) => _id === book._id)
-  const isBookInWishlist = wishlist.some(({_id}) => _id === book._id)
+  const isBookInCart = bookInCart(book)
+  const isBookInWishlist = bookInWishlist(book)
 
   function handleLike() {
     if(!isBookInWishlist) {

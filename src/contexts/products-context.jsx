@@ -50,8 +50,12 @@ export function ProductsProvider({ children }) {
 
   const ratingFilteredProducts = productsState?.inputRating > 1 ? categoryFilteredProducts.filter(({rating}) => productsState?.inputRating > rating) : categoryFilteredProducts
 
+  const getDiscount = (originalPrice, price) =>  Math.trunc(
+    ((originalPrice - price) / originalPrice) * 100
+  );
+
   return (
-    <ProductsContext.Provider value={{ productsState, productsDispatch, ratingFilteredProducts }}>
+    <ProductsContext.Provider value={{ productsState, productsDispatch, ratingFilteredProducts , getDiscount }}>
       {children}
     </ProductsContext.Provider>
   );

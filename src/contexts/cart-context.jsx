@@ -66,6 +66,8 @@ export function CartProvider({ children }) {
     }
   }
 
+  const bookInCart = (book) => cartState.cart.some(({_id}) => _id === book._id)
+
   return (
     <CartContext.Provider
       value={{
@@ -73,6 +75,7 @@ export function CartProvider({ children }) {
         cartDispatch,
         addProductToCart,
         removeProductFromCart,
+        bookInCart
       }}
     >
       {children}
