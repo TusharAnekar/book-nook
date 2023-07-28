@@ -7,6 +7,7 @@ import { useReducer } from "react";
 import { cartReducer, initialCartState } from "../reducers/cartReducer";
 import { addToCartService } from "../services/cart-services/addToCartService";
 import { deleteCartService } from "../services/cart-services/deleteCartService";
+import { quantityCartService } from "../services/cart-services/quantityCartService";
 
 export const CartContext = createContext();
 
@@ -66,7 +67,30 @@ export function CartProvider({ children }) {
     }
   }
 
-  const bookInCart = (book) => cartState.cart.some(({_id}) => _id === book._id)
+  async function updateQuantityInCart(id, typeOfUpdate) {
+    try {
+      const response = await quantityCartService(token, id, typeOfUpdate);
+      const {
+        status,
+        data: { cart },
+      } = response;
+
+      if (status === 200) {
+        cartDispatch({ type: "UPDATE_QUANTITY_IN_CART", payload: cart });
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  const bookInCart = (book) =>
+    cartState.cart.some(({ _id }) => _id === book._id);
+
+  const price = cartState.cart.reduce((total,{originalPrice, qty}) => total + (originalPrice * qty),0)
+
+  const totalDiscount = cartState.cart.reduce((total, {originalPrice, qty, price}) => total + ((originalPrice-price)*qty),0)
+
+  const totalAmount = cartState.cart.reduce((total, {price,qty}) => total+(price*qty),0)
 
   return (
     <CartContext.Provider
@@ -75,7 +99,11 @@ export function CartProvider({ children }) {
         cartDispatch,
         addProductToCart,
         removeProductFromCart,
-        bookInCart
+        bookInCart,
+        updateQuantityInCart,
+        price,
+        totalDiscount,
+        totalAmount
       }}
     >
       {children}
