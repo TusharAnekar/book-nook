@@ -88,7 +88,7 @@ export function Cart() {
             <p className="total-amount-text">
               You will save ₹ {totalDiscount} on this order
             </p>
-            <button className="checkout-button">Checkout</button>
+            <button className="checkout-button" onClick={() => navigate("/checkout")}>Checkout</button>
           </div>
         </div>
       ) : (

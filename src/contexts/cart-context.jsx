@@ -83,6 +83,10 @@ export function CartProvider({ children }) {
     }
   }
 
+  function emptyCart () {
+    cartDispatch({type: "CART_RESET", payload: []})
+  }
+
   const bookInCart = (book) =>
     cartState.cart.some(({ _id }) => _id === book._id);
 
@@ -103,7 +107,8 @@ export function CartProvider({ children }) {
         updateQuantityInCart,
         price,
         totalDiscount,
-        totalAmount
+        totalAmount,
+        emptyCart
       }}
     >
       {children}

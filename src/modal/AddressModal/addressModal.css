@@ -1,0 +1,51 @@
+.modal-container {
+  height: 90vh;
+  position: relative;
+}
+
+.address-modal-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 350px;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.address-modal-container h3 {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.address-modal-container form {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1rem;
+}
+
+.address-modal-container input {
+  padding: 0.3rem;
+}
+
+.address-modal-container button {
+  padding: 0.5rem;
+  width: 100%;
+}
+
+.submit-cancel-container {
+  display: flex;
+  column-gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.address-modal-container .submit-button {
+  background-color: var(--primary-color);
+  color: var(--light-white-color);
+}
+
+.address-modal-container .cancel-button {
+  color: red;
+}

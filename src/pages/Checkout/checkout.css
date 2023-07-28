@@ -1,0 +1,80 @@
+.checkout-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem 2rem;
+}
+
+.checkout-container h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.checkout-container button {
+    padding: 0.5rem 1rem;
+    background-color: var(--primary-color);
+    color: var(--light-white-color);
+    margin: 1rem 0;
+}
+
+.checkout-container .address-container {
+    display: flex;
+    column-gap: 1rem;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin: 1rem 0;
+    padding: 1rem;
+    width: 300px;
+}
+
+.checkout-container .order-summary-container {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    padding: 1rem;
+}
+
+.checkout-container h3 {
+    border-bottom: 1px solid gray;
+    padding-bottom: 0.5rem;
+}
+
+.checkout-container .books-container {
+    margin: 1rem 0;
+}
+
+.checkout-container .book-content-container, .price-content-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.checkout-container .bold,.price-details-header,.delivery-header  {
+    font-weight: bold;
+    border-bottom: 1px solid gray;
+}
+
+.checkout-container .total-amount-container{
+    font-weight: bold;
+    margin: 1rem 0;
+}
+
+.checkout-container .total-amount-text {
+    color:  green;
+    margin-bottom: 1rem;
+}
+
+@media (min-width: 768px) {
+    .checkout-container .address-order-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        width: 100vw;
+    }
+
+    .checkout-container .address-container {
+        width: 400px;
+    }
+
+    .checkout-container .order-summary-container {
+        height: fit-content;
+        width: 400px;
+    }
+}
