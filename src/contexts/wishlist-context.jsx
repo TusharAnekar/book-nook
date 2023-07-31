@@ -10,6 +10,8 @@ import {
 } from "../reducers/wishlistReducer";
 import { addToWishlistService } from "../services/wishlist-services/addToWishlistService";
 import { deleteWishlistService } from "../services/wishlist-services/deleteWishlistService";
+import { toast } from "react-toastify";
+import { useState } from "react";
 
 export const WishlistContext = createContext();
 
@@ -21,8 +23,11 @@ export function WishlistProvider({ children }) {
     initialWishlistState
   );
 
+  const [isLoadingWishlist, setIsLoadingWishlist] = useState(false)
+
   useEffect(() => {
     async function getWishlist() {
+      setIsLoadingWishlist(true)
       try {
         const response = await getWishlistService(token);
         const {
@@ -32,6 +37,7 @@ export function WishlistProvider({ children }) {
 
         if (status === 200) {
           wishlistDispatch({ type: "DISPLAY_WISHLIST", payload: wishlist });
+          setIsLoadingWishlist(false)
         }
       } catch (error) {
         console.log(error);
@@ -51,6 +57,7 @@ export function WishlistProvider({ children }) {
 
       if (status === 201) {
         wishlistDispatch({ type: "ADD_TO_WISHLIST", payload: wishlist });
+        toast.success("Added to wishlist")
       }
     } catch (error) {
       console.log(error);
@@ -67,6 +74,7 @@ export function WishlistProvider({ children }) {
 
       if (status === 200) {
         wishlistDispatch({ type: "REMOVE_FROM_WISHLIST", payload: wishlist });
+        toast.error("Removed from wishlist")
       }
     } catch (error) {
       console.log(error);
@@ -82,7 +90,7 @@ export function WishlistProvider({ children }) {
         wishlistDispatch,
         addProductToWishlist,
         removeProductFromWishlist,
-        bookInWishlist
+        bookInWishlist, isLoadingWishlist
       }}
     >
       {children}

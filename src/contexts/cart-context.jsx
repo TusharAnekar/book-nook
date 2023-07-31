@@ -8,16 +8,21 @@ import { cartReducer, initialCartState } from "../reducers/cartReducer";
 import { addToCartService } from "../services/cart-services/addToCartService";
 import { deleteCartService } from "../services/cart-services/deleteCartService";
 import { quantityCartService } from "../services/cart-services/quantityCartService";
+import { toast } from "react-toastify";
+import { useState } from "react";
+
 
 export const CartContext = createContext();
 
 export function CartProvider({ children }) {
   const [cartState, cartDispatch] = useReducer(cartReducer, initialCartState);
-
+  const [isLoadingCart, setIsLoadingCart] = useState(false)
   const { token } = useContext(AuthContext);
 
   useEffect(() => {
+    
     async function getCart() {
+      setIsLoadingCart(true)
       try {
         const response = await getCartService(token);
         const {
@@ -27,6 +32,7 @@ export function CartProvider({ children }) {
 
         if (status === 200) {
           cartDispatch({ type: "DISPLAY_CART", payload: cart });
+          setIsLoadingCart(false)
         }
       } catch (error) {
         console.log(error);
@@ -45,6 +51,7 @@ export function CartProvider({ children }) {
 
       if (status === 201) {
         cartDispatch({ type: "ADD_TO_CART", payload: cart });
+        toast.success("Added to cart")
       }
     } catch (error) {
       console.log(error);
@@ -61,6 +68,7 @@ export function CartProvider({ children }) {
 
       if (status === 200) {
         cartDispatch({ type: "REMOVE_FROM_CART", payload: cart });
+        toast.error("Removed from cart")
       }
     } catch (error) {
       console.log(error);
@@ -108,7 +116,8 @@ export function CartProvider({ children }) {
         price,
         totalDiscount,
         totalAmount,
-        emptyCart
+        emptyCart,
+        isLoadingCart
       }}
     >
       {children}

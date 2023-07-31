@@ -8,6 +8,8 @@ import { CartContext } from "../../contexts/cart-context";
 import { useNavigate } from "react-router-dom";
 import { ProductsContext } from "../../contexts/products-context";
 
+
+
 export function BookCard({ book }) {
   const { _id, img, name, author, price, originalPrice, rating } = book;
 
@@ -59,7 +61,6 @@ export function BookCard({ book }) {
         </div>
 
         <button onClick={handleAddToCart}>{isBookInCart ? "Go to Cart": "Add to Cart"}</button>
-        
           <FavoriteIcon
             className= {isBookInWishlist ? "like-icon heart-icon-fill" : "like-icon"}
             onClick={handleLike}

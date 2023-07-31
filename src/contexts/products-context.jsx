@@ -4,6 +4,7 @@ import {
   productsReducer,
 } from "../reducers/productsReducer";
 import { productsService } from "../services/products-services/productsService";
+import { useState } from "react";
 
 export const ProductsContext = createContext();
 
@@ -13,7 +14,10 @@ export function ProductsProvider({ children }) {
     initialProductsState
   );
 
+  const [isLoadingProducts, setIsLoadingProducts] = useState(false)
+
   async function getProducts() {
+    setIsLoadingProducts(true)
     try {
       const response = await productsService();
 
@@ -23,6 +27,7 @@ export function ProductsProvider({ children }) {
       } = response;
       if (status === 200) {
         productsDispatch({ type: "DISPLAY_PRODUCTS", payload: products });
+        setIsLoadingProducts(false)
       }
     } catch (error) {
       console.error(error);
@@ -55,7 +60,7 @@ export function ProductsProvider({ children }) {
   );
 
   return (
-    <ProductsContext.Provider value={{ productsState, productsDispatch, ratingFilteredProducts , getDiscount }}>
+    <ProductsContext.Provider value={{ productsState, productsDispatch, ratingFilteredProducts , getDiscount, isLoadingProducts }}>
       {children}
     </ProductsContext.Provider>
   );
