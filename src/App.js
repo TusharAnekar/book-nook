@@ -12,6 +12,8 @@ import { Cart } from "./pages/Cart/Cart";
 import { BookDetails } from "./components/BookDetails/BookDetails";
 import { Checkout } from "./pages/Checkout/Checkout";
 import { ToastContainer } from "react-toastify";
+import { RequiresAuth } from "./components/RequiresAuth";
+import { UserProfile } from "./pages/UserProfile/UserProfile";
 
 function App() {
   return (
@@ -35,9 +37,39 @@ function App() {
         <Route path="/products/:productId" element={<BookDetails />}></Route>
         <Route path="/login" element={<Login />}></Route>
         <Route path="/signup" element={<Signup />}></Route>
-        <Route path="/wishlist" element={<Wishlist />}></Route>
-        <Route path="/cart" element={<Cart />}></Route>
-        <Route path="/checkout" element={<Checkout />}></Route>
+        <Route
+          path="/user-profile"
+          element={
+            <RequiresAuth>
+              <UserProfile />
+            </RequiresAuth>
+          }
+        ></Route>
+
+        <Route
+          path="/wishlist"
+          element={
+            <RequiresAuth>
+              <Wishlist />
+            </RequiresAuth>
+          }
+        ></Route>
+        <Route
+          path="/cart"
+          element={
+            <RequiresAuth>
+              <Cart />
+            </RequiresAuth>
+          }
+        ></Route>
+        <Route
+          path="/checkout"
+          element={
+            <RequiresAuth>
+              <Checkout />
+            </RequiresAuth>
+          }
+        ></Route>
       </Routes>
     </div>
   );

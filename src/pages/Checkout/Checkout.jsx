@@ -23,7 +23,6 @@ export function Checkout() {
   } = useContext(CartContext);
 
   function handlePlaceOrder () {
-    console.log("Adf")
     navigate("/products")
     emptyCart()
   }

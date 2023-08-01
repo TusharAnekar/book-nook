@@ -8,9 +8,11 @@ import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlin
 import LibraryBooksOutlinedIcon from "@mui/icons-material/LibraryBooksOutlined";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
+import { AuthContext } from "../../contexts/auth-context";
 
 export function Header() {
   const { productsState: {inputSearch}, productsDispatch } = useContext(ProductsContext);
+  const {currentUser, token} = useContext(AuthContext)
   const navigate = useNavigate();
 
   function handleInput(e) {
@@ -53,7 +55,7 @@ export function Header() {
 
         <AccountCircleOutlinedIcon
           className="icon"
-          onClick={() => navigate("/login")}
+          onClick={() => (token || currentUser) ? navigate("/user-profile") : navigate("/login")}
         />
       </div>
     </nav>

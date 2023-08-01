@@ -17,7 +17,7 @@ export const WishlistContext = createContext();
 
 export function WishlistProvider({ children }) {
   const { token } = useContext(AuthContext);
-
+  
   const [wishlistState, wishlistDispatch] = useReducer(
     wishlistReducer,
     initialWishlistState

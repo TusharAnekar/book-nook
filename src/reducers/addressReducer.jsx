@@ -15,6 +15,11 @@ export const addressReducer = (state, { type, payload }) => {
         ...state,
         deliveryAddress: payload,
       };
+    case "DELETE_ADDRESS":
+      return {
+        ...state,
+        addresses: state.addresses.filter(({ id }) => id !== payload),
+      };
     default:
       return state;
   }

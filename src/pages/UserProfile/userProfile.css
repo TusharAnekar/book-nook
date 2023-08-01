@@ -1,0 +1,74 @@
+.user-profile-container {
+  display: grid;
+  place-items: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.user-profile-container .account-details-container {
+  width: 60vw;
+  max-width: 400px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.user-profile-container .profile-addresss-tabs {
+  display: flex;
+  justify-content: space-evenly;
+  border-bottom: 2px solid var(--primary-color);
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+}
+
+.user-profile-container .active-tab {
+  font-weight: bold;
+}
+
+.user-profile-container .profile-details-container,
+.addresses-details-container {
+  padding: 0rem 1rem 1rem 1rem;
+}
+
+.user-profile-container .name-email-container {
+  display: flex;
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+.user-profile-container .logout-button {
+  background-color: red;
+  color: var(--light-white-color);
+  padding: 0.5rem 1rem;
+  font-weight: bold;
+}
+
+.user-profile-container .addresses-container {
+    margin: 1rem 0;
+}
+
+.user-profile-container .address-container {
+    margin-bottom: 1rem;
+}
+
+.user-profile-container .edit-remove-button-container {
+    display: flex;
+    gap: 1rem;
+    margin-top: 0.5rem;
+}
+
+.user-profile-container .edit-button {
+    padding: 0.5rem;
+    border: 1px solid gray;
+}
+
+.user-profile-container .remove-button {
+    padding: 0.5rem;
+    color: red;
+    border: 1px solid red;
+}
+
+.user-profile-container .add-address-button {
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    background-color: var(--primary-color);
+    color: var(--light-white-color);
+}

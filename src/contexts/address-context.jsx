@@ -23,7 +23,10 @@ export function AddressProvider({ children }) {
 
   function setDeliveryAddress (deliveryAddress) {
     addressDispatch({ type: "SET_DELIVERY_ADDRESS", payload: deliveryAddress });
+  }
 
+  function deleteAddress (id) {
+    addressDispatch({type: "DELETE_ADDRESS", payload: id})
   }
 
   return (
@@ -33,7 +36,8 @@ export function AddressProvider({ children }) {
         addressDispatch,
         submitAddress,
         toggleAddressModal,
-        setDeliveryAddress
+        setDeliveryAddress,
+        deleteAddress
       }}
     >
       {children}
