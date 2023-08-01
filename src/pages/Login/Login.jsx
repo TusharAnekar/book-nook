@@ -30,9 +30,10 @@ export function Login() {
       <div className="login-container">
         <h2>Sign In</h2>
         <form onSubmit={handleLoginSubmit} className="form-container">
-          <label>
+          <label className="block">
             Email Address
             <input
+              className="block input"
               type="text"
               placeholder="bookNook@gmail.com"
               name={"email"}
@@ -40,9 +41,10 @@ export function Login() {
               onChange={handleInput}
             />
           </label>
-          <label>
+          <label className="block">
             Password
             <input
+              className="block input"
               type="password"
               placeholder="********"
               name={"password"}
@@ -51,10 +53,22 @@ export function Login() {
             />
           </label>
 
-          <button type="submit">Login</button>
-          <button type="submit" onClick={handleTestLogin}>Login with Test User</button>
+          <button type="submit" className="login-button block">
+            Login
+          </button>
+          <button
+            type="submit"
+            onClick={handleTestLogin}
+            className="login-test-cred-button block"
+          >
+            Login with Test User
+          </button>
         </form>
-        <Link to={"/signup"} className="new-account-link">Create New Account</Link>
+        <p className="new-account-link">
+          <Link to={"/signup"} className="new-account-link">
+            Create New Account
+          </Link>
+        </p>
       </div>
     </div>
   );

@@ -85,9 +85,11 @@ export function Signup() {
           </label>
           <button type="submit">Create New Account</button>
         </form>
+        <p className="login-link">
         <Link to={"/login"} className="login-link">
           Already have an account
         </Link>
+        </p>
       </div>
     </div>
   );
