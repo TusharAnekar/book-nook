@@ -7,6 +7,8 @@ import { WishlistContext } from "../../contexts/wishlist-context";
 import { CartContext } from "../../contexts/cart-context";
 import { useNavigate } from "react-router-dom";
 import { ProductsContext } from "../../contexts/products-context";
+import { AuthContext } from "../../contexts/auth-context";
+import { toast } from "react-toastify";
 
 
 
@@ -15,6 +17,7 @@ export function BookCard({ book }) {
 
   const navigate = useNavigate()
 
+  const {isLoggedIn} = useContext(AuthContext)
   const {getDiscount} = useContext(ProductsContext)
   const { addProductToCart, bookInCart } = useContext(CartContext);
   const {bookInWishlist, addProductToWishlist, removeProductFromWishlist} = useContext(WishlistContext)
@@ -25,18 +28,28 @@ export function BookCard({ book }) {
   const isBookInWishlist = bookInWishlist(book)
 
   function handleLike() {
-    if(!isBookInWishlist) {
-      addProductToWishlist(book);
+    if(isLoggedIn) {
+      if(!isBookInWishlist) {
+        addProductToWishlist(book);
+      } else {
+        removeProductFromWishlist(book._id)
+      }
     } else {
-      removeProductFromWishlist(book._id)
+      toast.error("Please login to continue adding to wishlist.")
+      navigate("/login")
     }
   }
 
   function handleAddToCart() {
-    if(isBookInCart) {
-      navigate("/cart")
+    if(isLoggedIn) {
+      if(isBookInCart) {
+        navigate("/cart")
+      } else {
+        addProductToCart(book);
+      }
     } else {
-      addProductToCart(book);
+      toast.error("Please login to continue adding to cart.")
+      navigate("/login")
     }
   }
 

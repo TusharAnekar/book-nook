@@ -3,9 +3,9 @@ import { AuthContext } from "../contexts/auth-context";
 import { Navigate, useLocation } from "react-router-dom";
 
 export const RequiresAuth = ({ children }) => {
-  const { token, currentUser } = useContext(AuthContext);
+  const { isLoggedIn } = useContext(AuthContext);
   const location = useLocation();
-  return token || currentUser ? (
+  return isLoggedIn ? (
     children
   ) : (
     <Navigate to={"/login"} state={{ from: location }}></Navigate>

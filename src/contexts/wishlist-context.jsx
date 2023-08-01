@@ -60,7 +60,8 @@ export function WishlistProvider({ children }) {
         toast.success("Added to wishlist")
       }
     } catch (error) {
-      console.log(error);
+      console.error(error)
+      toast.error("Unable to add to wishlist.")
     }
   }
 
@@ -77,7 +78,8 @@ export function WishlistProvider({ children }) {
         toast.error("Removed from wishlist")
       }
     } catch (error) {
-      console.log(error);
+      console.error(error);
+      toast.error("Unable to remove from wishlist.")
     }
   }
 

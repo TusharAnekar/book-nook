@@ -7,10 +7,13 @@ import StarIcon from "@mui/icons-material/Star";
 import { CartContext } from "../../contexts/cart-context";
 import { WishlistContext } from "../../contexts/wishlist-context";
 import { Loader } from "../Loader/Loader";
+import { AuthContext } from "../../contexts/auth-context";
+import { toast } from "react-toastify";
 
 export function BookDetails() {
   const { productId } = useParams();
   const navigate = useNavigate();
+  const {isLoggedIn} = useContext(AuthContext)
 
   const {
     productsState: { products },
@@ -39,18 +42,28 @@ export function BookDetails() {
   const isBookInWishlist = bookInWishlist(book);
 
   function handleAddToCart() {
-    if (isBookInCart) {
-      navigate("/cart");
+    if(isLoggedIn) {
+      if(isBookInCart) {
+        navigate("/cart")
+      } else {
+        addProductToCart(book);
+      }
     } else {
-      addProductToCart(book);
+      toast.error("Please login to continue adding to cart.")
+      navigate("/login")
     }
   }
 
   function handleAddToWishlist() {
-    if (!isBookInWishlist) {
-      addProductToWishlist(book);
+    if(isLoggedIn) {
+      if(!isBookInWishlist) {
+        addProductToWishlist(book);
+      } else {
+        navigate("/wishlist")
+      }
     } else {
-      navigate("/wishlist");
+      toast.error("Please login to continue adding to wishlist.")
+      navigate("/login")
     }
   }
 

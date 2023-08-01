@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { CartContext } from "../../contexts/cart-context";
 
 import "./checkout.css";
+import { toast } from "react-toastify";
 
 export function Checkout() {
   const {
@@ -23,6 +24,7 @@ export function Checkout() {
   } = useContext(CartContext);
 
   function handlePlaceOrder () {
+    toast.success("Order placed successfully.")
     navigate("/products")
     emptyCart()
   }

@@ -11,6 +11,7 @@ export function AuthProvider({ children }) {
 
   const [token, setToken] = useState(localStorageToken?.token);
   const [currentUser, setCurrentUser] = useState(localStorageToken?.user);
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
   const navigate = useNavigate();
 
   async function loginHandler({ email, password }) {
@@ -28,11 +29,22 @@ export function AuthProvider({ children }) {
         );
         setToken(encodedToken);
         setCurrentUser(foundUser);
+        setIsLoggedIn(true)
         navigate("/products");
         toast.success("Logged in successfully.");
       }
     } catch (error) {
-      console.error(error);
+      const {
+        response: { status },
+      } = error;
+      if (status === 401) {
+        toast.error("Invalid password! Please try again!");
+      } else if (status === 404) {
+        toast.error("Credentials not found! Please signup before logging in!");
+      } else {
+        console.error(error);
+        toast.error("Unable to sign in!");
+      }
     }
   }
 
@@ -61,13 +73,24 @@ export function AuthProvider({ children }) {
         toast.success("Signed up successfully.");
       }
     } catch (error) {
-      console.error(error);
+      const {
+        response: { status },
+      } = error;
+      if (status === 422) {
+        toast.error(
+          "User email already exists! Please try signing up with another email!"
+        );
+      } else {
+        console.error(error);
+        toast.error("Unable to sign up!");
+      }
     }
   }
 
   function logoutUser () {
     setToken(null)
     setCurrentUser(null)
+    setIsLoggedIn(false)
     localStorage.removeItem("loginDetails")
     toast.success("Logged out successfully")
     navigate("/")
@@ -75,7 +98,7 @@ export function AuthProvider({ children }) {
 
   return (
     <AuthContext.Provider
-      value={{ loginHandler, token, currentUser, signupHandler,logoutUser }}
+      value={{ loginHandler, token, currentUser, signupHandler,logoutUser,isLoggedIn }}
     >
       {children}
     </AuthContext.Provider>
