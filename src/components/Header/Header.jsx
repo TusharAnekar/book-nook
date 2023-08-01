@@ -9,10 +9,20 @@ import LibraryBooksOutlinedIcon from "@mui/icons-material/LibraryBooksOutlined";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
 import { AuthContext } from "../../contexts/auth-context";
+import { WishlistContext } from "../../contexts/wishlist-context";
+import { CartContext } from "../../contexts/cart-context";
+
 
 export function Header() {
-  const { productsState: {inputSearch}, productsDispatch } = useContext(ProductsContext);
-  const {currentUser, token} = useContext(AuthContext)
+  const {
+    productsState: { inputSearch },
+    productsDispatch,
+  } = useContext(ProductsContext);
+  const { currentUser, token } = useContext(AuthContext);
+  const {
+    wishlistState: { wishlist },
+  } = useContext(WishlistContext);
+  const {cartState: {cart}} = useContext(CartContext)
   const navigate = useNavigate();
 
   function handleInput(e) {
@@ -43,19 +53,29 @@ export function Header() {
           onClick={() => navigate("/products")}
         />
 
-        <FavoriteBorderOutlinedIcon
-          className="icon"
-          onClick={() => navigate("/wishlist")}
-        />
+        <div className="icon-container">
+          <FavoriteBorderOutlinedIcon
+            className="icon"
+            onClick={() => navigate("/wishlist")}
+          />
+          {!!wishlist.length && <p>{wishlist.length}</p>}
+        </div>
 
+        <div className="icon-container">
         <ShoppingCartOutlinedIcon
           className="icon"
           onClick={() => navigate("/cart")}
         />
+        {!!cart.length && <p>{cart.length}</p>}
+        </div>
 
         <AccountCircleOutlinedIcon
           className="icon"
-          onClick={() => (token || currentUser) ? navigate("/user-profile") : navigate("/login")}
+          onClick={() =>
+            token || currentUser
+              ? navigate("/user-profile")
+              : navigate("/login")
+          }
         />
       </div>
     </nav>

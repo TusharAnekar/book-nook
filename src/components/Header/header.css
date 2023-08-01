@@ -48,6 +48,20 @@
   }
 }
 
+.header-container .icon-container {
+  position: relative;
+}
+
+.header-container .icon-container p {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: var(--primary-color);
+  border-radius: 50%;
+  border: 1px solid var(--light-white-color);
+  width: 1rem;
+}
+
 @media (min-width: 1024px) {
   .icons svg {
     font-size: 3rem;
