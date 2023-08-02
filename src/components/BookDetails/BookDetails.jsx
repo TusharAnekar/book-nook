@@ -24,7 +24,7 @@ export function BookDetails() {
   const { bookInCart, addProductToCart } = useContext(CartContext);
   const { bookInWishlist, addProductToWishlist } = useContext(WishlistContext);
 
-  const book = products?.find(({ _id }) => _id === Number(productId));
+  const book = products?.find(({ _id }) => _id === productId);
 
   const {
     img,
