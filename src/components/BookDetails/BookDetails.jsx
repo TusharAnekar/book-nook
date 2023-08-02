@@ -13,7 +13,7 @@ import { toast } from "react-toastify";
 export function BookDetails() {
   const { productId } = useParams();
   const navigate = useNavigate();
-  const {isUserLoggedIn : {isLoggedIn}} = useContext(AuthContext)
+  const {isUserLoggedIn} = useContext(AuthContext)
 
   const {
     productsState: { products },
@@ -42,7 +42,7 @@ export function BookDetails() {
   const isBookInWishlist = bookInWishlist(book);
 
   function handleAddToCart() {
-    if(isLoggedIn) {
+    if(isUserLoggedIn?.isLoggedIn) {
       if(isBookInCart) {
         navigate("/cart")
       } else {
@@ -55,7 +55,7 @@ export function BookDetails() {
   }
 
   function handleAddToWishlist() {
-    if(isLoggedIn) {
+    if(isUserLoggedIn?.isLoggedIn) {
       if(!isBookInWishlist) {
         addProductToWishlist(book);
       } else {

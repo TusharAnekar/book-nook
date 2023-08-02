@@ -17,7 +17,7 @@ export function BookCard({ book }) {
 
   const navigate = useNavigate()
 
-  const {isUserLoggedIn : {isLoggedIn}} = useContext(AuthContext)
+  const {isUserLoggedIn } = useContext(AuthContext)
   const {getDiscount} = useContext(ProductsContext)
   const { addProductToCart, bookInCart } = useContext(CartContext);
   const {bookInWishlist, addProductToWishlist, removeProductFromWishlist} = useContext(WishlistContext)
@@ -28,7 +28,7 @@ export function BookCard({ book }) {
   const isBookInWishlist = bookInWishlist(book)
 
   function handleLike() {
-    if(isLoggedIn) {
+    if(isUserLoggedIn?.isLoggedIn) {
       if(!isBookInWishlist) {
         addProductToWishlist(book);
       } else {
@@ -41,7 +41,7 @@ export function BookCard({ book }) {
   }
 
   function handleAddToCart() {
-    if(isLoggedIn) {
+    if(isUserLoggedIn?.isLoggedIn) {
       if(isBookInCart) {
         navigate("/cart")
       } else {
