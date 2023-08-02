@@ -58,7 +58,7 @@ export function CartProvider({ children }) {
     }
   }
 
-  async function removeProductFromCart(id) {
+  async function removeProductFromCart(id, isEmptyCart) {
     try {
       const response = await deleteCartService(id, token);
       const {
@@ -68,7 +68,7 @@ export function CartProvider({ children }) {
 
       if (status === 200) {
         cartDispatch({ type: "REMOVE_FROM_CART", payload: cart });
-        toast.error("Removed from cart")
+        !isEmptyCart && toast.error("Removed from cart")
       }
     } catch (error) {
       console.log(error);
@@ -92,7 +92,9 @@ export function CartProvider({ children }) {
   }
 
   function emptyCart () {
-    cartDispatch({type: "CART_RESET", payload: []})
+    for (let i=0; i<cartState?.cart?.length ; i++) {
+      removeProductFromCart(cartState.cart[i]._id, true)
+    }
   }
 
 
