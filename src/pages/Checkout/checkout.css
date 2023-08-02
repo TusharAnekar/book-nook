@@ -12,7 +12,7 @@
     margin-bottom: 2rem;
 }
 
-.checkout-container button {
+.checkout-container .add-new-address-button, .checkout-button {
     padding: 0.5rem 1rem;
     background-color: var(--primary-color);
     color: var(--light-white-color);
@@ -26,6 +26,13 @@
     margin: 1rem 0;
     padding: 1rem;
     width: 300px;
+}
+
+.checkout-container .remove-button {
+    height: fit-content;
+    color: red;
+    padding: 0.5rem;
+    align-self: flex-end;
 }
 
 .checkout-container .address-container input {

@@ -94,7 +94,6 @@ export function UserProfile() {
                       <p>{pincode}</p>
                       <p>{phoneNo}</p>
                       <div className="edit-remove-button-container">
-                        <button className="edit-button">Edit</button>
                         <button
                           className="remove-button"
                           onClick={() => handleRemove(id)}

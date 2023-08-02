@@ -14,7 +14,7 @@ export function Checkout() {
   const {
     addressState: { showAddressModal, addresses, deliveryAddress },
     toggleAddressModal,
-    setDeliveryAddress,
+    setDeliveryAddress, deleteAddress
   } = useContext(AddressContext);
 
   const navigate = useNavigate();
@@ -48,12 +48,17 @@ export function Checkout() {
     setIsDeliveryAddressSet(true)
   }
 
+  function handleRemove(id) {
+    deleteAddress(id);
+  }
+
   return (
     <div className="checkout-container">
       <h2>Checkout</h2>
+      {showAddressModal && <AddressModal />}
       <div className="address-order-container">
         <div>
-          <button onClick={() => toggleAddressModal(true)}>
+          <button className="add-new-address-button" onClick={() => toggleAddressModal(true)}>
             Add New Address
           </button>
 
@@ -78,6 +83,7 @@ export function Checkout() {
                     <p>{pincode}</p>
                     <p>{phoneNo}</p>
                   </div>
+                  <button className="remove-button" onClick={() => handleRemove(id)}>Remove</button>
                 </div>
               );
             })}
@@ -147,7 +153,6 @@ export function Checkout() {
           </div>
         </div>
       </div>
-      {showAddressModal && <AddressModal />}
     </div>
   );
 }
