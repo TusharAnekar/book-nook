@@ -13,7 +13,7 @@ import { toast } from "react-toastify";
 export function BookDetails() {
   const { productId } = useParams();
   const navigate = useNavigate();
-  const {isLoggedIn} = useContext(AuthContext)
+  const {isUserLoggedIn : {isLoggedIn}} = useContext(AuthContext)
 
   const {
     productsState: { products },

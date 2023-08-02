@@ -17,7 +17,7 @@ export function BookCard({ book }) {
 
   const navigate = useNavigate()
 
-  const {isLoggedIn} = useContext(AuthContext)
+  const {isUserLoggedIn : {isLoggedIn}} = useContext(AuthContext)
   const {getDiscount} = useContext(ProductsContext)
   const { addProductToCart, bookInCart } = useContext(CartContext);
   const {bookInWishlist, addProductToWishlist, removeProductFromWishlist} = useContext(WishlistContext)
