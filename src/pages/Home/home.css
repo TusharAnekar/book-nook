@@ -1,7 +1,6 @@
 .home-content-container {
   margin: 1rem;
   flex-grow: 1;
-  min-height: 100vh;
 }
 
 .home-container .background-image-container {

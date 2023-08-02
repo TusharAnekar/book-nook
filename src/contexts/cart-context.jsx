@@ -95,7 +95,6 @@ export function CartProvider({ children }) {
     cartDispatch({type: "CART_RESET", payload: []})
   }
 
-  console.log(cartState.cart)
 
   const bookInCart = (book) =>
     cartState.cart.some(({ _id }) => _id === book._id);

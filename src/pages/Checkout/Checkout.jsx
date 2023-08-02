@@ -1,5 +1,5 @@
 import { AddressModal } from "../../modal/AddressModal/AddressModal";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AddressContext } from "../../contexts/address-context";
 import { useNavigate } from "react-router-dom";
 import { CartContext } from "../../contexts/cart-context";
@@ -8,6 +8,9 @@ import "./checkout.css";
 import { toast } from "react-toastify";
 
 export function Checkout() {
+
+  const [isDeliveryAddressSet, setIsDeliveryAddressSet] = useState(false)
+
   const {
     addressState: { showAddressModal, addresses, deliveryAddress },
     toggleAddressModal,
@@ -20,13 +23,29 @@ export function Checkout() {
     cartState: { cart },
     price,
     totalDiscount,
-    totalAmount, emptyCart
+    totalAmount,
+    emptyCart,
   } = useContext(CartContext);
 
-  function handlePlaceOrder () {
-    toast.success("Order placed successfully.")
-    navigate("/products")
-    emptyCart()
+  function handlePlaceOrder() {
+    console.log(deliveryAddress.pincode)
+    if (isDeliveryAddressSet) {
+      toast.success("Order placed successfully.");
+      setIsDeliveryAddressSet(false)
+      navigate("/products");
+      emptyCart();
+    } else {
+      if(addresses.length) {
+        toast.error("Please select address to place order.");
+      } else {
+        toast.error("Please add address to place order.")
+      }
+    }
+  }
+
+  function handleInput (address) {
+    setDeliveryAddress(address)
+    setIsDeliveryAddressSet(true)
   }
 
   return (
@@ -47,7 +66,7 @@ export function Checkout() {
                   <input
                     type="radio"
                     name="address"
-                    onClick={() => setDeliveryAddress(address)}
+                    onClick={() => handleInput(address)}
                   />
                   <div>
                     <p>
@@ -109,7 +128,7 @@ export function Checkout() {
             {deliveryAddress.name && (
               <div>
                 <p className="delivery-header">Delivery Details</p>
-                <div >
+                <div>
                   <p>{deliveryAddress.name}</p>
                   <p>{deliveryAddress.area}</p>
                   <p>{deliveryAddress.city}</p>
@@ -121,7 +140,7 @@ export function Checkout() {
             )}
             <button
               className="checkout-button"
-              onClick={deliveryAddress.name && handlePlaceOrder}
+              onClick={handlePlaceOrder}
             >
               Place Order
             </button>

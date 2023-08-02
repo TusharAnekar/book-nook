@@ -14,6 +14,8 @@ export function AuthProvider({ children }) {
   const [isLoggedIn, setIsLoggedIn] = useState(false)
   const navigate = useNavigate();
 
+  const isUserLoggedIn = JSON.parse(localStorage.getItem("isLoggedIn"))
+
   async function loginHandler({ email, password }) {
     try {
       const response = await loginService(email, password);
@@ -29,6 +31,7 @@ export function AuthProvider({ children }) {
         );
         setToken(encodedToken);
         setCurrentUser(foundUser);
+        localStorage.setItem("isLoggedIn", JSON.stringify({isLoggedIn: true}))
         setIsLoggedIn(true)
         navigate("/products");
         toast.success("Logged in successfully.");
@@ -92,13 +95,14 @@ export function AuthProvider({ children }) {
     setCurrentUser(null)
     setIsLoggedIn(false)
     localStorage.removeItem("loginDetails")
+    localStorage.setItem("isLoggedIn", JSON.stringify({isLoggedIn: false}))
     toast.success("Logged out successfully")
     navigate("/")
   }
 
   return (
     <AuthContext.Provider
-      value={{ loginHandler, token, currentUser, signupHandler,logoutUser,isLoggedIn }}
+      value={{ loginHandler, token, currentUser, signupHandler,logoutUser,isLoggedIn, isUserLoggedIn }}
     >
       {children}
     </AuthContext.Provider>

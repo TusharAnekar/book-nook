@@ -1,9 +1,9 @@
 .signup-container {
-  height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  flex-grow: 1;
 }
 
 .signup-container .form-details-container {
