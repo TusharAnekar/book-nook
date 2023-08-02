@@ -18,7 +18,7 @@ export function Header() {
     productsState: { inputSearch },
     productsDispatch,
   } = useContext(ProductsContext);
-  const { currentUser, token } = useContext(AuthContext);
+  const { currentUser, token, isUserLoggedIn } = useContext(AuthContext);
   const {
     wishlistState: { wishlist },
   } = useContext(WishlistContext);
@@ -58,7 +58,7 @@ export function Header() {
             className="icon"
             onClick={() => navigate("/wishlist")}
           />
-          {!!wishlist.length && <p>{wishlist.length}</p>}
+          {isUserLoggedIn?.isLoggedIn && (!!wishlist.length && <p>{wishlist.length}</p>)}
         </div>
 
         <div className="icon-container">
@@ -66,7 +66,7 @@ export function Header() {
           className="icon"
           onClick={() => navigate("/cart")}
         />
-        {!!cart.length && <p>{cart.length}</p>}
+        {isUserLoggedIn?.isLoggedIn && (!!cart.length && <p>{cart.length}</p>)}
         </div>
 
         <AccountCircleOutlinedIcon
