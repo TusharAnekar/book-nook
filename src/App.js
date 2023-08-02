@@ -14,6 +14,7 @@ import { Checkout } from "./pages/Checkout/Checkout";
 import { ToastContainer } from "react-toastify";
 import { RequiresAuth } from "./components/RequiresAuth";
 import { UserProfile } from "./pages/UserProfile/UserProfile";
+import { Footer } from "./components/Footer/Footer";
 
 function App() {
   return (
@@ -71,6 +72,7 @@ function App() {
           }
         ></Route>
       </Routes>
+      <Footer/>
     </div>
   );
 }

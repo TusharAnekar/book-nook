@@ -68,7 +68,7 @@ export function BookDetails() {
   }
 
   return (
-    <>
+    <div className="book-details-component-container">
       {isLoadingProducts ? (
         <Loader />
       ) : (
@@ -121,6 +121,6 @@ export function BookDetails() {
           </div>
         </div>
       )}
-    </>
+    </div>
   );
 }

@@ -1,5 +1,9 @@
+.book-details-component-container {
+  flex-grow: 1;
+  min-height: 100vh;
+}
+
 .book-details-container .book-container {
-  height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;

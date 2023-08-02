@@ -4,7 +4,6 @@ import { Link, useNavigate } from "react-router-dom";
 import "./home.css";
 
 import { CategoriesContext } from "../../contexts/categories-context";
-import { Footer } from "../../components/Footer/Footer";
 import { Loader } from "../../components/Loader/Loader";
 
 export function Home() {
@@ -61,8 +60,6 @@ export function Home() {
               ))}
             </div>
           </div>
-
-          <Footer />
         </div>
       )}
     </>

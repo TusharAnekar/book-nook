@@ -1,7 +1,9 @@
 .cart-container {
-    height: 100vh;
     display: flex;
     justify-content: center;
+    min-height: 100vh;
+    flex-grow: 1;
+    margin-bottom: 2rem;
 }
 
 .cart-container h2 {
@@ -24,9 +26,7 @@
     margin-bottom: 2rem;
     padding: 1rem;
     width: 50vw;
-    height: 35vh;
     max-width: 400px;
-    max-height: 300px;
 }
 
 .cart-container .book-cart-container button {

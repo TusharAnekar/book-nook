@@ -1,5 +1,6 @@
 .wishlist-container {
-    height: 100vh;
+    min-height: 100vh;
+    flex-grow: 1;
 }
 
 .wishlist-container .wishlist-books-container {
@@ -9,7 +10,7 @@
     align-items: center;
 }
 
-.wishlist-books-container h2 {
+.wishlist-container h2 {
     text-align: center;
     margin: 1rem;
 }
