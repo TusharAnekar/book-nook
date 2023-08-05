@@ -53,7 +53,7 @@ export function Footer() {
           {isUserLoggedIn?.isLoggedIn ? (
             <div className="links-container">
               <p>
-                <NavLink to={"/home"} className={"links"}>
+                <NavLink to={"/"} className={"links"}>
                   Home
                 </NavLink>
               </p>
@@ -63,7 +63,7 @@ export function Footer() {
                 </NavLink>
               </p>
               <p>
-                <NavLink to={"/wislist"} className={"links"}>
+                <NavLink to={"/wishlist"} className={"links"}>
                   Wishlist
                 </NavLink>
               </p>
