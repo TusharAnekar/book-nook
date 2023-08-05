@@ -20,6 +20,16 @@
   text-decoration: underline;
 }
 
+.products-container .filters-container  label {
+  cursor: pointer;
+  width: fit-content;
+}
+
+.products-container .filters-container input {
+  margin-right: 0.5rem;
+  cursor: pointer;
+}
+
 .products-container .sort-filter-container {
   display: flex;
   flex-direction: column;
