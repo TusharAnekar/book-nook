@@ -27,6 +27,7 @@ button {
   cursor: pointer;
   border: none;
   border-radius: 0.5rem;
+  font-size: 0.8rem;
 }
 
 @media (min-width: 768px) {
@@ -40,6 +41,10 @@ button {
 
   p {
     font-size: 1.125rem;
+  }
+
+  button {
+    font-size: 1rem;
   }
 }
 
