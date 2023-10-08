@@ -12,7 +12,6 @@ import { AuthContext } from "../../contexts/auth-context";
 import { WishlistContext } from "../../contexts/wishlist-context";
 import { CartContext } from "../../contexts/cart-context";
 
-
 export function Header() {
   const {
     productsState: { inputSearch },
@@ -22,7 +21,9 @@ export function Header() {
   const {
     wishlistState: { wishlist },
   } = useContext(WishlistContext);
-  const {cartState: {cart}} = useContext(CartContext)
+  const {
+    cartState: { cart },
+  } = useContext(CartContext);
   const navigate = useNavigate();
 
   function handleInput(e) {
@@ -58,15 +59,21 @@ export function Header() {
             className="icon"
             onClick={() => navigate("/wishlist")}
           />
-          {isUserLoggedIn?.isLoggedIn && (!!wishlist.length && <p>{wishlist.length}</p>)}
+          {isUserLoggedIn?.isLoggedIn && !!wishlist.length && (
+            <p className="wishlist-length">{wishlist.length}</p>
+          )}
         </div>
 
         <div className="icon-container">
-        <ShoppingCartOutlinedIcon
-          className="icon"
-          onClick={() => navigate("/cart")}
-        />
-        {isUserLoggedIn?.isLoggedIn && (!!cart.length && <p>{cart.length}</p>)}
+          <ShoppingCartOutlinedIcon
+            className="icon"
+            onClick={() => navigate("/cart")}
+          />
+          <div className="cart-length">
+            {isUserLoggedIn?.isLoggedIn && !!cart.length && (
+              <p>{cart.length}</p>
+            )}
+          </div>
         </div>
 
         <AccountCircleOutlinedIcon
