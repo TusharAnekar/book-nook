@@ -69,11 +69,9 @@ export function Header() {
             className="icon"
             onClick={() => navigate("/cart")}
           />
-          <div className="cart-length">
-            {isUserLoggedIn?.isLoggedIn && !!cart.length && (
-              <p>{cart.length}</p>
-            )}
-          </div>
+          {isUserLoggedIn?.isLoggedIn && !!cart.length && (
+            <p className="cart-length">{cart.length}</p>
+          )}
         </div>
 
         <AccountCircleOutlinedIcon
