@@ -52,19 +52,21 @@ export function Cart() {
                       </p>
                       <p>{author}</p>
                       <p>{price}</p>
-                      <RemoveCircleIcon
-                        className="icon remove"
-                        onClick={() =>
-                          handleBookQuantityUpdate(_id, "decrement", qty)
-                        }
-                      />
-                      <span className="qty-number">{qty}</span>
-                      <AddCircleIcon
-                        className="icon add"
-                        onClick={() =>
-                          handleBookQuantityUpdate(_id, "increment", qty)
-                        }
-                      />
+                      <div className="remove-qty-add-container">
+                        <RemoveCircleIcon
+                          className="icon remove"
+                          onClick={() =>
+                            handleBookQuantityUpdate(_id, "decrement", qty)
+                          }
+                        />
+                        <p className="qty-number">{qty}</p>
+                        <AddCircleIcon
+                          className="icon add"
+                          onClick={() =>
+                            handleBookQuantityUpdate(_id, "increment", qty)
+                          }
+                        />
+                      </div>
 
                       <button onClick={() => removeProductFromCart(_id)}>
                         Remove from cart
