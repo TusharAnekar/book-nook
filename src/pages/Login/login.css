@@ -14,7 +14,8 @@
   padding: 1rem;
 }
 
-.login-container h2,.new-account-link {
+.login-container h2,
+.new-account-link {
   text-align: center;
   margin: 1rem 0;
 }
@@ -34,6 +35,19 @@
   background-color: var(--primary-color);
   color: var(--light-white-color);
   margin: 1rem 0;
+}
+
+.login-page-container .login-password {
+  position: relative;
+}
+
+.login-page-container .login-password .visibility-icon {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin-right: 0.5rem;
+  margin-bottom: 0.2rem;
+  cursor: pointer;
 }
 
 .login-page-container .login-test-cred-button {

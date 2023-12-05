@@ -1,11 +1,14 @@
 import { Link } from "react-router-dom";
 import { useContext, useState } from "react";
+import VisibilityIcon from "@mui/icons-material/Visibility";
+import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 
 import "./login.css";
 import { AuthContext } from "../../contexts/auth-context";
 
 export function Login() {
   const [loginDetails, setLoginDetails] = useState({ email: "", password: "" });
+  const [isShowPassword, setIsShowPassword] = useState(false);
   const { loginHandler } = useContext(AuthContext);
 
   function handleInput(e) {
@@ -25,6 +28,10 @@ export function Login() {
     });
   }
 
+  const handleShowPassword = () => {
+    setIsShowPassword((prev) => !prev);
+  };
+
   return (
     <div className="login-page-container">
       <div className="login-container">
@@ -38,19 +45,34 @@ export function Login() {
               placeholder="bookNook@gmail.com"
               name={"email"}
               value={loginDetails.email}
+              required
               onChange={handleInput}
             />
           </label>
-          <label className="block">
+          <label className="block login-password">
             Password
             <input
               className="block input"
-              type="password"
+              type={isShowPassword ? "text" : "password"}
               placeholder="********"
+              pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$"
+              title="Password should contain min 8 charcters, at least 1 uppercase letter, 1 lowercase letter, 1 number and 1 special character"
               name={"password"}
+              required
               value={loginDetails.password}
               onChange={handleInput}
             />
+            {isShowPassword ? (
+              <VisibilityOffIcon
+                className="visibility-icon"
+                onClick={handleShowPassword}
+              />
+            ) : (
+              <VisibilityIcon
+                className="visibility-icon"
+                onClick={handleShowPassword}
+              />
+            )}
           </label>
 
           <button type="submit" className="login-button block">

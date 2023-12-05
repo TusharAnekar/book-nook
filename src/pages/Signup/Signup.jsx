@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import "./signup.css";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../contexts/auth-context";
+import VisibilityIcon from "@mui/icons-material/Visibility";
+import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 
 export function Signup() {
   const [signupDetails, setSignupDetails] = useState({
@@ -11,6 +13,7 @@ export function Signup() {
     email: "",
     password: "",
   });
+  const [isShowPassword, setIsShowPassword] = useState(false);
 
   const { signupHandler } = useContext(AuthContext);
 
@@ -29,6 +32,10 @@ export function Signup() {
       password: "",
     });
   }
+
+  const handleShowPassword = () => {
+    setIsShowPassword((prev) => !prev);
+  };
 
   return (
     <div className="signup-container">
@@ -71,24 +78,37 @@ export function Signup() {
               className="block input"
             />
           </label>
-          <label className="block">
+          <label className="block login-password">
             Password
             <input
-              type="password"
+              type={isShowPassword ? "text" : "password"}
               placeholder="********"
               name="password"
               value={signupDetails.password}
+              pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$"
+              title="Password should contain min 8 charcters, at least 1 uppercase letter, 1 lowercase letter, 1 number and 1 special character"
               required
               onChange={handleInput}
               className="block input"
             />
+            {isShowPassword ? (
+              <VisibilityOffIcon
+                className="visibility-icon"
+                onClick={handleShowPassword}
+              />
+            ) : (
+              <VisibilityIcon
+                className="visibility-icon"
+                onClick={handleShowPassword}
+              />
+            )}
           </label>
           <button type="submit">Create New Account</button>
         </form>
         <p className="login-link">
-        <Link to={"/login"} className="login-link">
-          Already have an account
-        </Link>
+          <Link to={"/login"} className="login-link">
+            Already have an account
+          </Link>
         </p>
       </div>
     </div>
