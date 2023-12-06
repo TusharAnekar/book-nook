@@ -32,6 +32,11 @@ export function Login() {
     setIsShowPassword((prev) => !prev);
   };
 
+  const handleDropCopyPaste = (e) => {
+    e.preventDefault();
+    return false;
+  };
+
   return (
     <div className="login-page-container">
       <div className="login-container">
@@ -58,6 +63,9 @@ export function Login() {
               pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$"
               title="Password should contain min 8 charcters, at least 1 uppercase letter, 1 lowercase letter, 1 number and 1 special character"
               name={"password"}
+              onPaste={handleDropCopyPaste}
+              onDrop={handleDropCopyPaste}
+              onCopy={handleDropCopyPaste}
               required
               value={loginDetails.password}
               onChange={handleInput}

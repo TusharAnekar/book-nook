@@ -37,6 +37,11 @@ export function Signup() {
     setIsShowPassword((prev) => !prev);
   };
 
+  const handleDropCopyPaste = (e) => {
+    e.preventDefault();
+    return false;
+  };
+
   return (
     <div className="signup-container">
       <div className="form-details-container">
@@ -89,6 +94,9 @@ export function Signup() {
               title="Password should contain min 8 charcters, at least 1 uppercase letter, 1 lowercase letter, 1 number and 1 special character"
               required
               onChange={handleInput}
+              onPaste={handleDropCopyPaste}
+              onDrop={handleDropCopyPaste}
+              onCopy={handleDropCopyPaste}
               className="block input"
             />
             {isShowPassword ? (
