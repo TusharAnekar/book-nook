@@ -30,6 +30,10 @@
   padding: 0.3rem;
 }
 
+.login-page-container .form-container .password-input {
+  padding-right: 2.5rem;
+}
+
 .login-page-container .login-button {
   padding: 0.5rem;
   background-color: var(--primary-color);

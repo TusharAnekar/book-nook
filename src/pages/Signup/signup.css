@@ -33,6 +33,10 @@
   position: relative;
 }
 
+.signup-container .password-input {
+  padding-right: 2.5rem;
+}
+
 .signup-container .visibility-icon {
   position: absolute;
   bottom: 0;

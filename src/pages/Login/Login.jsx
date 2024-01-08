@@ -57,7 +57,7 @@ export function Login() {
           <label className="block login-password">
             Password
             <input
-              className="block input"
+              className="block input password-input"
               type={isShowPassword ? "text" : "password"}
               placeholder="********"
               pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$"
